@@ -27,7 +27,7 @@ for game in trainingGames:
             judgment = pyip.inputInt("""Is the comment:
             1. Not about the refs
             2. Expressing positive sentiment toward the refs
-            3. Expressing negative sentiment toward the refs""", min=1, max=3)
+            3. Expressing negative sentiment toward the refs\n""", min=1, max=3)
             commentType.append(judgment)
         else:
             commentType.append(0)

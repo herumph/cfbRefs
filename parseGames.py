@@ -9,7 +9,7 @@ def main(outfile):
 
     dateDict = {}
     seasonEnd = "Dec 19, 2020"
-    seasonEnd = datetime.strptime(seasonEnd, "%b %d, %Y")
+    dtseasonEnd = datetime.strptime(seasonEnd, "%b %d, %Y")
     for team in gamedf["team"]:
         teamdf = gamedf[(gamedf["team"] == team)]
         # check to make sure the team played games
@@ -23,7 +23,7 @@ def main(outfile):
                 dtDate = datetime.strptime(date, "%b %d, %Y")
                 opponent = opponents[i]
                 # not counting post season games
-                if dtDate < seasonEnd:
+                if dtDate < dtseasonEnd:
                     # add a date if it's not in the dictionary
                     if date not in dateDict.keys():
                         dateDict[date] = []
@@ -39,6 +39,8 @@ def main(outfile):
                         format = ordering[0] + " vs " + ordering[1]
 
                     # add each game if not added already
+
+                    ####### Add an argument for conference only games here #######
                     if format not in dateDict[date]:
                         dateDict[date].append(format)
 

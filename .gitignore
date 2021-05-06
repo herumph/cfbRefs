@@ -1,0 +1,6 @@
+artcreddit.py
+config_bot.py
+*.txt
+*.csv
+*.pyo
+*.pyc

@@ -2,6 +2,8 @@ import pandas as pd
 import pyinputplus as pyip
 import re
 
+pd.set_option('display.max_colwidth', None)
+
 trainingGames = [
     "clemson_tosu2019",
     "tennessee_scar2019",
@@ -41,3 +43,6 @@ for game in trainingGames:
     commentdf.to_csv(game + "_judged.csv")
 
     print(commentdf)
+
+    # Sizemo Note: It would be nice if we could include a permalink to the comment in case we 
+    # need context for a comment.

@@ -4,3 +4,4 @@ config_bot.py
 *.csv
 *.pyo
 *.pyc
+.DS_Store

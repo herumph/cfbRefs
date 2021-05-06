@@ -50,11 +50,30 @@ if __name__ == "__main__":
     teams = [x.split(";") for x in teamdf["teams"].values]
     teams = [item for sublist in teams for item in sublist]
 
+    # teams that 404 because of naming differences
+    missedTeams = {
+        "Pitt": "pittsburgh",
+        "SMU": "southern-methodist",
+        "UCF": "central-florida",
+        "UTSA": "texas-san-antonio",
+        "UAB": "alabama-birmingham",
+        "UTEP": "texas-el-paso",
+        "USC": "southern-california",
+        "Texas A&M": "texas-am",
+        "LSU": "louisiana-state",
+        "Ole Miss": "mississippi",
+        "Louisiana": "louisiana-lafayette",
+    }
+
     noData = []
     df = pd.DataFrame()
     for team in teams:
         print(team)
-        teamDict = getGames(year, team)
+        if team not in missedTeams.keys():
+            teamDict = getGames(year, team)
+        else:
+            teamDict = getGames(year, missedTeams[team])
+            teamDict["team"] = team
         print(teamDict)
         if teamDict is None:
             noData.append(team)
@@ -63,7 +82,7 @@ if __name__ == "__main__":
             for key in joinKeys:
                 teamDict[key] = "/".join(teamDict[key])
             df = df.append(teamDict, ignore_index=True)
-        df.to_csv(str(year) + "_games.csv")
         sleep(2)  # to not spam the website too much
+    df.to_csv(str(year) + "_games.csv")
 
     print("Teams without data: ", noData)

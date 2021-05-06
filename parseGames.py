@@ -44,7 +44,7 @@ def main(outfile):
 
     print(dateDict)
     with open(outfile, "w") as f:
-        json.dump(dateDict, f)
+        json.dump(dateDict, f, indent=4, separators=(",", ": "))
 
 
 if __name__ == "__main__":

@@ -11,6 +11,8 @@ def main(game, keywords):
     commentdf = pd.read_csv(game + ".csv")
     commentType = []
 
+    # define commentType column if it doesn't exist and pick up where you left off if it does
+    # and update dataframe after each judgement
     for ind, row in commentdf.iterrows():
         commentBody = row["body"]
         match = re.search(
@@ -24,9 +26,10 @@ def main(game, keywords):
                 """Is the comment:
             1. Not about the refs
             2. Expressing positive sentiment toward the refs
-            3. Expressing negative sentiment toward the refs\n""",
+            3. Expressing negative sentiment toward the refs
+            4. Expressing neutral sentiment toward the refs\n""",
                 min=1,
-                max=3,
+                max=4,
             )
             commentType.append(judgment)
         else:
@@ -40,10 +43,10 @@ def main(game, keywords):
 
 if __name__ == "__main__":
     trainingGames = [
-        "clemson_tosu2019",
+        # "clemson_tosu2019",
         "tennessee_scar2019",
-        "auburn_lsu2019",
-        "notredame_michigan2019",
+        # "auburn_lsu2019",
+        # "notredame_michigan2019",
     ]
 
     with open("keywords.json", "r") as f:

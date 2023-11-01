@@ -1,0 +1,13 @@
+{
+    "javascript.suggest.enabled": false,
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "typescript.suggest.enabled": false,
+    "editor.suggest.matchOnWordStartOnly": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.inlineSuggest.enabled": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
+}
